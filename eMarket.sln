@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMarketApi", "eMarketApi\eM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMarketApi.Tests", "eMarketApi.Tests\eMarketApi.Tests.csproj", "{2DA332CC-83E9-414E-945F-222018D45980}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMarket.DTO", "eMarket.DTO\eMarket.DTO.csproj", "{B085103C-9800-4429-A348-88D204036F82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2DA332CC-83E9-414E-945F-222018D45980}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DA332CC-83E9-414E-945F-222018D45980}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DA332CC-83E9-414E-945F-222018D45980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B085103C-9800-4429-A348-88D204036F82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B085103C-9800-4429-A348-88D204036F82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B085103C-9800-4429-A348-88D204036F82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B085103C-9800-4429-A348-88D204036F82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
