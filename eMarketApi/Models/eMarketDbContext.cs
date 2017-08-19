@@ -8,7 +8,7 @@ namespace eMarketApi.Models
 {
     public class eMarketDbContext : DbContext
     {
-        public eMarketDbContext() : base("eMarketDbContext")
+        public eMarketDbContext() : base("name=eMarketDbContext")
         {
 
         }

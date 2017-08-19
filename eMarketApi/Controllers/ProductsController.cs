@@ -18,8 +18,8 @@ namespace eMarketApi.Controllers
         // GET: api/products
         public IEnumerable<ProductDTO> GetProducts()
         {
-            return Context.Products
-                .Select(product => ConvertProductDTO(product));
+            return Context.Products.ToList()
+                .Select(product => product.ToProductDTO());
         }
 
         //GET: api/products/1
@@ -32,7 +32,7 @@ namespace eMarketApi.Controllers
                 return NotFound();
             }
 
-            return Ok(ConvertProductDTO(product));
+            return Ok(product.ToProductDTO());
         }
 
 
@@ -43,12 +43,7 @@ namespace eMarketApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            Product productEntity = new Product();
-            productEntity.Name = product.Name;
-            productEntity.Description = product.Description;
-            productEntity.Price = product.Price;
-            productEntity.Weight = product.Weight;
-            productEntity.CategoryId = product.Category.Id;
+            Product productEntity = product.ToProduct();
 
             Context.Products.Add(productEntity);
             await Context.SaveChangesAsync();
@@ -64,30 +59,6 @@ namespace eMarketApi.Controllers
             base.Dispose(disposing);
         }
 
-        private ProductDTO ConvertProductDTO(Product product)
-        {
-            return new ProductDTO()
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Description = product.Description,
-                Category = ConvertCategoryDTO(product.Category),
-                Price = product.Price,
-                Weight = product.Weight
-            };
-        }
-
-        private CategoryDTO ConvertCategoryDTO(Category category)
-        {
-            if (category == null)
-                return null;
-
-            return new CategoryDTO()
-            {
-                Id = category.Id,
-                Name = category.Name,
-                Parent = ConvertCategoryDTO(category.Parent)
-            };
-        }
+        
     }
 }

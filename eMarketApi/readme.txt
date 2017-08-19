@@ -1,13 +1,16 @@
-﻿Code First hint:
+﻿Code First hints:
 
-//install EntityFramework
+<b>install EntityFramework</b>
 PM: install-package EntityFramework
 
-//setup configuration migrations
+<b>setup configuration migrations</b>
 PM: enable-migrations
 
-//create category table also will create product because linked
+<b>create category table also will create product because linked</b>
 PM: add-migration CreateCategory
 
-//run migration command
+<b>run migration command</b>
+PM: update-database
+
+<b>save persist data from Configuration.Seed</b>
 PM: update-database

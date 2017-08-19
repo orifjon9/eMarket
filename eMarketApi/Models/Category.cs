@@ -13,6 +13,6 @@ namespace eMarketApi.Models
         public string Name { get; set; }
 
         public int? ParentId { get; set; }
-        public Category Parent { get; set; }
+        public virtual Category Parent { get; set; }
     }
 }

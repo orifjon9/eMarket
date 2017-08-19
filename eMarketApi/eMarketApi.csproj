@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -97,6 +98,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Converters.cs" />
     <Compile Include="Migrations\201708190259474_CreateCategory.cs" />
     <Compile Include="Migrations\201708190259474_CreateCategory.Designer.cs">
       <DependentUpon>201708190259474_CreateCategory.cs</DependentUpon>

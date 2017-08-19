@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using eMarketApi.Models;
+using eMarket.DTO.Module;
 
 namespace eMarketApi.Controllers
 {
@@ -18,13 +19,14 @@ namespace eMarketApi.Controllers
         private eMarketDbContext db = new eMarketDbContext();
 
         // GET: api/Categories
-        public IQueryable<Category> GetCategories()
+        public IEnumerable<CategoryDTO> GetCategories()
         {
-            return db.Categories;
+            return db.Categories.ToList()
+                .Select(c=>c.ToCategoryDTO());
         }
 
         // GET: api/Categories/5
-        [ResponseType(typeof(Category))]
+        [ResponseType(typeof(CategoryDTO))]
         public async Task<IHttpActionResult> GetCategory(int id)
         {
             Category category = await db.Categories.FindAsync(id);
@@ -33,12 +35,12 @@ namespace eMarketApi.Controllers
                 return NotFound();
             }
 
-            return Ok(category);
+            return Ok(category.ToCategoryDTO());
         }
 
         // PUT: api/Categories/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutCategory(int id, Category category)
+        public async Task<IHttpActionResult> PutCategory(int id, CategoryDTO category)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +52,7 @@ namespace eMarketApi.Controllers
                 return BadRequest();
             }
 
-            db.Entry(category).State = EntityState.Modified;
+            db.Entry(category.ToCategory()).State = EntityState.Modified;
 
             try
             {
@@ -72,22 +74,22 @@ namespace eMarketApi.Controllers
         }
 
         // POST: api/Categories
-        [ResponseType(typeof(Category))]
-        public async Task<IHttpActionResult> PostCategory(Category category)
+        [ResponseType(typeof(CategoryDTO))]
+        public async Task<IHttpActionResult> PostCategory(CategoryDTO category)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Categories.Add(category);
+            db.Categories.Add(category.ToCategory());
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = category.Id }, category);
         }
 
         // DELETE: api/Categories/5
-        [ResponseType(typeof(Category))]
+        [ResponseType(typeof(CategoryDTO))]
         public async Task<IHttpActionResult> DeleteCategory(int id)
         {
             Category category = await db.Categories.FindAsync(id);
@@ -99,7 +101,7 @@ namespace eMarketApi.Controllers
             db.Categories.Remove(category);
             await db.SaveChangesAsync();
 
-            return Ok(category);
+            return Ok(category.ToCategoryDTO());
         }
 
         protected override void Dispose(bool disposing)
