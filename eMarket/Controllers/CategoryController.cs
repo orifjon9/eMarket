@@ -17,5 +17,10 @@ namespace eMarket.Controllers
 
             return View(categories);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }
