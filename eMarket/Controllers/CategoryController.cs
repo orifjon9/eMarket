@@ -14,7 +14,7 @@ namespace eMarket.Controllers
         public ActionResult Index()
         {
             var categories = Client.Current.GetDataAsync<List<CategoryDTO>>("/api/categories");
-
+            
             return View(categories);
         }
 
